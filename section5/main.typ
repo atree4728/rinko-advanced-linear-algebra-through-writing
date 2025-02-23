@@ -20,8 +20,8 @@
   titlefmt: strong,
 )
 #let definition = thmbox("definition", "定義", fill: rgb("#eeff"))
-#let example = thmplain("example", "Example").with(numbering: none)
-#let proof = thmproof("proof", "Proof")
+#let example = thmplain("example", "Example", titlefmt: strong).with(numbering: none)
+#let proof = thmproof("proof", "Proof", titlefmt: strong)
 
 #let red(expr) = text(fill: color.red)[$#expr$]
 #let blu(expr) = text(fill: blue)[$#expr$]
@@ -70,9 +70,9 @@
 ==
 
 / Motivation: $A$ を簡単な標準形にしたい。
-  - $A$ の相似変換に対して $W$ が不変ならよいが、そうではない……
+  - $A$ の相似変換に対して $C(A)$ が不変、つまり $C(A) = C(P^(-1)A P)$ ならよいが、そうではない……
   - 実際、$X A = A X <=> red(P X P^(-1)) blu(P A P^(-1)) = blu(P A P^(-1)) red(P X P^(-1)). $
-  - 不変ではないけれど、線形同型写像 $F: X |-> P X P^(-1)$ を考えられる。
+  - 不変ではないけれど、線形同型写像 $F: X |-> P X P^(-1)$ を考えられる！
 
 #theorem(number: none)[
   正方行列 $A, B$ が相似なら、$C(A) tilde.eq C(B).$ 特に $dim C(A) = dim C(B).$
