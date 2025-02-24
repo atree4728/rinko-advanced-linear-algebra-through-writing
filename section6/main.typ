@@ -228,7 +228,7 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
 #align(
   center,
   cetz.canvas(
-    length: 9%,
+    length: 8.8%,
     {
       import cetz.draw: *
       rect((0, 0), (1, 0), name: "W0")
@@ -279,13 +279,17 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
       content(
         (4, 2.2),
         (11, 2.38),
-        box(for _ in range(31) [$tilde.triple$], fill: white),
+        box(for _ in range(30) [$tilde.triple$], fill: white),
       )
     },
   ),
 )
 
-== $W_(k-1), W_k$ の上段を抜粋。
+/ Check!: *$U_j$ は"$N^j times$ でやっと $bold(0)$ になる"ベクトル全体によって張られる部分空間。*
+
+== $W_(k-1), W_k$ の上段を抜粋
+
+これから増大列から基底をとっていくので、基底がとれた部分に色を塗っていく。
 
 #align(
   center,
@@ -305,9 +309,7 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
   ),
 )
 
-==
-
-/ Check!: *$U_j$ は"$N^j times$ でやっと $bold(0)$ になる"ベクトル全体によって張られる部分空間。*
+== $U_k$ の基底 $bold(x)_1, dots.c, bold(x)_d_k$
 
 線型独立な $bold(x)_1, dots.c, bold(x)_d_k in U_k$ によって $W_(k-1)$ の基底を延長して $W_k$ の基底とする。
 
@@ -319,7 +321,11 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
   - もし $sum_j c_j bold(x)_j != bold(0)$ であれば $bold(x)_j in.not W_(k-1)$ に矛盾するので、$sum_j c_j bold(x)_j = bold(0).$
   - $bold(x)_1, dots.c, bold(x)_d_k$ は線型独立だったから $c_1 = dots.c = c_d_k = 0.$
 
-== $Im_N U_k subset.eq U_(k-1)$ の様子。
+/ Check!: $U_k = angle.l bold(x)_1, dots.c, bold(x)_d_k angle.r$ 上の $N$ の像 $Im N|_U_k = angle.l N bold(x)_1, dots.c, N bold(x)_d_k angle.r$ は*退化しない*。
+
+== $Im N|_U_k subset.eq U_(k-1)$ の様子
+
+色が濃い方が $bold(0)$ から遠くて頑固なイメージ。$N$ を適用する度に薄くなる。
 
 #align(
   center,
@@ -338,7 +344,7 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
       content(("arrow.start", 50%, "arrow.end"), anchor: "south", angle: "arrow.start", padding: 10pt, $N times$)
       content((10, 2), $U_(k-1)$)
       content((10, 5.25), $U_k = angle.l bold(x)_1, dots.c, bold(x)_d_k angle.r$)
-      content((2, 2.5), $Im = angle.l N bold(x)_1, dots.c, N bold(x)_d_k angle.r$)
+      content((2, 2.5), $Im& N|_U_k =\ &angle.l N bold(x)_1, dots.c, N bold(x)_d_k angle.r$)
       line((12.5, 4), (rel: (0, 2.5)), mark: (symbol: "bar", width: 15pt), stroke: 1pt, name: "d")
       content((name: "d", anchor: 50%), frame: "rect", padding: 0.1, stroke: none, fill: white, $d_k$)
       line((-0.5, 1.5), (rel: (0, 2.5)), mark: (symbol: "bar", width: 15pt), stroke: 1pt, name: "d")
@@ -349,7 +355,7 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
   ),
 )
 
-== 余った部分の基底をとる。
+== 余った部分の基底をとる
 
 #align(
   center,
@@ -376,17 +382,17 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
   ),
 )
 
-== $W_(k-2)$ の上段でも同様の現象が起こる。
+== $W_(k-2)$ の上段でも同様の現象が起こる
 
 $U_(k-1)$ の基底は $N bold(x)_1, dots.c, N bold(x)_d_k, bold(x)_(d_k+1), dots.c, bold(x)_d_(k-1)$ になっている。
 
-$Im_N U_k subset.eq U_(k-1)$ と $N bold(x)_1, dots.c, N bold(x)_d_k$ の線型独立性を示したときとまったく同様にして次が成り立つ：
+$Im N|_U_k subset.eq U_(k-1)$ と $N bold(x)_1, dots.c, N bold(x)_d_k$ の線型独立性を示したときとまったく同様に、\ 次が成り立つ：
 
-- $Im_N U_(k-1) = angle.l N^2 bold(x)_1, dots.c, N^2 bold(x)_d_k, N bold(x)_(d_k+1), dots.c, N bold(x)_d_(k-1) angle.r subset.eq U_(k-2).$
-- $N^2 bold(x)_1, dots.c, N^2 bold(x)_d_k, N bold(x)_(d_k+1), dots.c, N bold(x)_d_(k-1)$ は一次独立。
-  - 次のように換言してもよい：$N times$ によって $U_(k-1)$ は退化しない。つまり、$dim Im_N U_(k-1) = d_(k-1).$
++ $Im N|_U_(k-1) = angle.l N^2 bold(x)_1, dots.c, N^2 bold(x)_d_k, N bold(x)_(d_k+1), dots.c, N bold(x)_d_(k-1) angle.r subset.eq U_(k-2).$
++ $N^2 bold(x)_1, dots.c, N^2 bold(x)_d_k, N bold(x)_(d_k+1), dots.c, N bold(x)_d_(k-1)$ は一次独立。
+  - $N$ によって $U_(k-1)$ は退化しない。
 
-== $Im U_(k-1) subset.eq U_(k-2)$ の様子。
+== $Im N|_U_(k-1) subset.eq U_(k-2)$ の様子
 
 #align(
   center,
@@ -417,7 +423,7 @@ $Im_N U_k subset.eq U_(k-1)$ と $N bold(x)_1, dots.c, N bold(x)_d_k$ の線型�
           size: 16pt,
         )[$angle.l N bold(x)_1, dots.c, N bold(x)_d_k,\ bold(x)_(d_k+1), dots.c, bold(x)_(d_(k-1)) angle.r$],
       )
-      content((2, 2.5), $Im_N U_(k-1)$)
+      content((2, 2.5), $Im N|_U_(k-1)$)
       line((15, 0), (rel: (0, 4)), mark: (symbol: "bar", width: 15pt), stroke: 1pt, name: "d")
       content((name: "d", anchor: 50%), frame: "rect", padding: 0.1, stroke: none, fill: white, $d_(k-2)$)
       line((15, 4), (rel: (0, 2.5)), mark: (symbol: "bar", width: 15pt), stroke: 1pt, name: "d")
@@ -439,7 +445,7 @@ $Im_N U_k subset.eq U_(k-1)$ と $N bold(x)_1, dots.c, N bold(x)_d_k$ の線型�
   ),
 )
 
-== 例によって余った部分の基底をとる。
+== 例によって余った部分の基底をとる
 
 #align(
   center,
@@ -580,8 +586,9 @@ $Im_N U_k subset.eq U_(k-1)$ と $N bold(x)_1, dots.c, N bold(x)_d_k$ の線型�
 
 == 視点の変換："seed" により基底が生成されていく。
 
-- "余った部分"でとった基底 $bold(x)_l$ を seed と見る。
-- $d_j+1 <= l <= d_(j-1)$ なら、$bold(x)_l in U_j$ は "レベル $j$ の seed"。
+"余った部分"でとった基底 $bold(x)_l$ を seed と呼ぶことにする。
+
+$~> d_j+1 <= l <= d_(j-1)$ なら、$bold(x)_l in U_j$ は "レベル $j$ の seed"。
 
 #align(
   center,
@@ -611,8 +618,29 @@ $Im_N U_k subset.eq U_(k-1)$ と $N bold(x)_1, dots.c, N bold(x)_d_k$ の線型�
     node((3, 3), [$dots.c$]),
     node((4, 3), $bold(x)_(d_2+1), dots.c, bold(x)_d_1$),
     node(enclose: ((1, 0), (1, 3)), fill: gradient.linear(teal, teal.lighten(90%), angle: 90deg)),
-    node(enclose: ((2, 1), (2, 3)), fill: gradient.linear(teal.lighten(30%), teal.lighten(90%), angle: 90deg)),
+    node(
+      enclose: ((2, 1), (2, 3)),
+      fill: gradient.linear(teal.lighten(30%), teal.lighten(90%), angle: 90deg),
+    ),
     node(enclose: ((4, 3), (4, 3)), fill: teal.lighten(90%)),
+  ),
+)
+
+レベル $j$ の seed $bold(x)_l$ は長さ $j$ のベクトルの系列を生成する。
+#align(
+  center,
+  diagram(
+    spacing: 3em,
+    (
+      node((0, 0), $bold(x)_l$),
+      node((1, 0), $N bold(x)_l$),
+      node((2, 0), [$dots.c$]),
+      node((3, 0), $N^(j-1) bold(x)_l$),
+      node((4, 0), $N^j bold(x)_l = bold(0)$),
+    )
+      .intersperse(edge("|->", text(size: 16pt)[$N$], label-sep: 0em))
+      .join(),
+    node(enclose: ((0, 0), (4, 0)), fill: gradient.linear(teal, teal.lighten(100%))),
   ),
 )
 
@@ -631,7 +659,7 @@ $
   &= P_(j, l) J(0; j).
 $
 
-/ Check!: $P_(j, l)$ は、レベル $j$ の seed $bold(x)_l$ による長さ $j$ のベクトル列。
+/ Check!: $P_(j, l)$ は、レベル $j$ の seed $bold(x)_l$ による長さ $j$ のベクトル列を並べたもの。
 
 == $P$ の構成
 
@@ -663,14 +691,14 @@ $~>$ サイズ $d_j$ の Jordan 細胞が $d_j - d_(j+1)$ 個。
 
 == 余談：主格転倒
 
-/ Question: $P = mat(P_(k, 1), dots.c, P_(k, d_k), dots.c, P_(1, d_2+1), dots.c, P_(1, d_1))$ は本当に $n$ 本のベクトルを含むのか？
+/ Question: $P = mat(P_(k, 1), dots.c, P_(k, d_k), dots.c, P_(1, d_2+1), dots.c, P_(1, d_1))$ は本当に $n times n$ になっているのか？
 
-- $P$ を構成する行列のうち、サイズが $n times j$ なのは $P_(j, d_(j+1)+1), dots.c, P_(j, d_j)$ の $d_j - d_(j+1)$ 個。
-- したがって、$P$ に含まれるベクトルは合計で $sum_(j=1)^k j (d_j - d_(j+1))$ 本。
-- $sum_(j=1)^k j (d_j - d_(j+1)) = n$ を計算するのは意外と難しい。
+  - $P$ を構成する行列のうち、サイズが $n times j$ なのは $P_(j, d_(j+1)+1), dots.c, P_(j, d_j)$ の\ $d_j - d_(j+1)$ 個。
+  - したがって、$P$ に含まれるベクトルは合計で $sum_(j=1)^k j (d_j - d_(j+1))$ 本。
+  - $sum_(j=1)^k j (d_j - d_(j+1)) = n$ を計算するのは意外と難しい。
 
 
 / 主格転倒テク: 積の和を計算するときに、添字を取り換えるテクニック。
-- 「$j$ が $d_j - d_(j+1)$ 個寄与する」という視点を転換して、「$d_j$ がいくつ寄与するか」を考える。
-- $d_j$ の寄与は $j - (j-1) = 1.$
-- したがって $sum_j j (d_j - d_(j+1)) = sum_d_j d_j = d_1 + dots.c + d_n = n.$
+  - 「$j$ が $d_j - d_(j+1)$ 個寄与する」という視点を転換して、\ 「$d_j$ がいくつ寄与するか」を考える。
+  - $d_j$ の寄与は $j - (j-1) = 1.$
+  - したがって $sum_j j (d_j - d_(j+1)) = sum_d_j d_j = d_1 + dots.c + d_n = n.$
