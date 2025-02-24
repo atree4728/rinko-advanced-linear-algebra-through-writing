@@ -285,20 +285,6 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
   ),
 )
 
-==
-
-/ Check!: *$U_j$ は"$N^j times$ でやっと $bold(0)$ になる"ベクトル全体によって張られる部分空間。*
-
-線型独立な $bold(x)_1, dots.c, bold(x)_d_k in U_k$ によって $W_(k-1)$ の基底を延長して $W_k$ の基底とする。
-
-このとき、$bold(x)_1, dots.c, bold(x)_d_k$ は次の条件を満たしている：
-+ $angle.l N bold(x)_1, dots.c, N bold(x)_d_k angle.r subset.eq U_(k-1).$
-  - $bold(x)_j$ は "$N^k$ でやっと $bold(0)$ になる"から、$N bold(x)_j$ は "$N^(k-1)$ でやっと $bold(0)$" になる。
-+ $N bold(x)_1, dots.c, N bold(x)_d_k$ は一次独立。
-  - $sum_j c_j N bold(x)_j = bold(0) => N (sum_j c_j bold(x)_j) = bold(0) => sum_j c_j bold(x)_j in W_1 => sum_j c_j bold(x)_j in W_(k-1).$
-  - もし $sum_j c_j bold(x)_j != bold(0)$ であれば $bold(x)_j in.not W_(k-1)$ に矛盾するので、$sum_j c_j bold(x)_j = bold(0).$
-  - $bold(x)_1, dots.c, bold(x)_d_k$ は線型独立だったから $c_1 = dots.c = c_d_k = 0.$
-
 == $W_(k-1), W_k$ の上段を抜粋。
 
 #align(
@@ -314,10 +300,24 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
       // line((0, 1.5), (rel: (4, 0)), stroke: (dash: "dashed"))
       content((2, 2), $U_(k-1)$)
       content((10, 2), $U_(k-1)$)
-      content((10, 5.25), $U_k = angle.l bold(x)_1, dots.c, bold(x)_d_k angle.r$)
+      content((10, 5.25), $U_k$)
     },
   ),
 )
+
+==
+
+/ Check!: *$U_j$ は"$N^j times$ でやっと $bold(0)$ になる"ベクトル全体によって張られる部分空間。*
+
+線型独立な $bold(x)_1, dots.c, bold(x)_d_k in U_k$ によって $W_(k-1)$ の基底を延長して $W_k$ の基底とする。
+
+このとき、$bold(x)_1, dots.c, bold(x)_d_k$ は次の条件を満たしている：
++ $angle.l N bold(x)_1, dots.c, N bold(x)_d_k angle.r subset.eq U_(k-1).$
+  - $bold(x)_j$ は "$N^k$ でやっと $bold(0)$ になる"から、$N bold(x)_j$ は "$N^(k-1)$ でやっと $bold(0)$" になる。
++ $N bold(x)_1, dots.c, N bold(x)_d_k$ は線型独立。
+  - $sum_j c_j N bold(x)_j = bold(0) => N (sum_j c_j bold(x)_j) = bold(0) => sum_j c_j bold(x)_j in W_1 => sum_j c_j bold(x)_j in W_(k-1).$
+  - もし $sum_j c_j bold(x)_j != bold(0)$ であれば $bold(x)_j in.not W_(k-1)$ に矛盾するので、$sum_j c_j bold(x)_j = bold(0).$
+  - $bold(x)_1, dots.c, bold(x)_d_k$ は線型独立だったから $c_1 = dots.c = c_d_k = 0.$
 
 == $Im_N U_k subset.eq U_(k-1)$ の様子。
 
@@ -552,9 +552,125 @@ $Im_N U_k subset.eq U_(k-1)$ と $N bold(x)_1, dots.c, N bold(x)_d_k$ の線型�
 
 == $CC^n$ の基底
 
-以上のような操作を繰り返すことにより $CC^n = W_k$ の基底をとることができる。
-その構成は次の基底を集めたものになっている：
-- $U_k$ の基底：$bold(x)_1, dots.c, bold(x)_d_k.$
-- $U_(k-1)$ の基底：$N bold(x)_1, dots.c, N bold(x)_d_k, bold(x)_(d_k+1), dots.c, bold(x)_d_(k-1).$
-- $dots.v$
-- $U_1$ の基底 $N^(k-1) bold(x)_1, dots.c, N^(k-1) bold(x)_d_k, N^(k-2) bold(x)_(d_k+1), dots.c, N^(k-2) bold(x)_d_(k-1), dots.c, bold(x)_(d_2+1), dots.c, bold(x)_d_1.$
+以上のような操作を繰り返すことにより $CC^n = W_k = U_k plus.circle dots.c plus.circle U_1$ の基底をとることができる。
+
+#align(
+  center,
+  diagram(
+    spacing: 1.5em,
+    node((0, 0), [$U_k$ の基底]),
+    node((0, 1), [$U_(k-1)$ の基底]),
+    node((0, 3), [$U_1$ の基底]),
+    node((1, 0), $bold(x)_1, dots.c, bold(x)_d_k$),
+    node((1, 1), $N bold(x)_1, dots.c, N bold(x)_d_k$),
+    node((1, 3), $N^(k-1) bold(x)_1, dots.c, N^(k-1) bold(x)_d_k$),
+    node((2, 1), $bold(x)_(d_k+1), dots.c, bold(x)_d_(k-1)$),
+    node((2, 3), $N^(k-2) bold(x)_(d_k+1), dots.c, N^(k-2) bold(x)_d_(k-1)$),
+    node((4, 3), $bold(x)_(d_2+1), dots.c, bold(x)_d_1$),
+    node((0, 2), [$dots.v$]),
+    node((1, 2), [$dots.v$]),
+    node((2, 2), [$dots.v$]),
+    node((3, 2), [$dots.down$]),
+    node((3, 3), [$dots.c$]),
+    node(enclose: ((1, 0), (1, 0)), fill: color.red),
+    node(enclose: ((1, 1), (2, 1)), fill: color.red.lighten(30%)),
+    node(enclose: ((1, 3), (4, 3)), fill: color.red.lighten(90%)),
+  ),
+)
+
+== 視点の変換："seed" により基底が生成されていく。
+
+- "余った部分"でとった基底 $bold(x)_l$ を seed と見る。
+- $d_j+1 <= l <= d_(j-1)$ なら、$bold(x)_l in U_j$ は "レベル $j$ の seed"。
+
+#align(
+  center,
+  diagram(
+    spacing: 1.5em,
+    node((0, 0), [$U_k$ の基底]),
+    node((0, 1), [$U_(k-1)$ の基底]),
+    node((0, 2), [$dots.v$]),
+    node((0, 3), [$U_1$ の基底]),
+    (
+      node((1, 0), $bold(x)_1, dots.c, bold(x)_d_k$),
+      node((1, 1), $N bold(x)_1, dots.c, N bold(x)_d_k$),
+      node((1, 2), [$dots.v$]),
+      node((1, 3), $N^(k-1) bold(x)_1, dots.c, N^(k-1) bold(x)_d_k$),
+    )
+      .intersperse(edge("|->", text(size: 15pt)[$N$], right))
+      .join(),
+    (
+      node((2, 1), $bold(x)_(d_k+1), dots.c, bold(x)_d_(k-1)$),
+      node((2, 2), [$dots.v$]),
+      node((2, 3), $N^(k-2) bold(x)_(d_k+1), dots.c, N^(k-2) bold(x)_d_(k-1)$),
+    )
+      .intersperse(edge("|->", text(size: 15pt)[$N$], right))
+      .join(),
+
+    node((3, 2), [$dots.down$]),
+    node((3, 3), [$dots.c$]),
+    node((4, 3), $bold(x)_(d_2+1), dots.c, bold(x)_d_1$),
+    node(enclose: ((1, 0), (1, 3)), fill: gradient.linear(teal, teal.lighten(90%), angle: 90deg)),
+    node(enclose: ((2, 1), (2, 3)), fill: gradient.linear(teal.lighten(30%), teal.lighten(90%), angle: 90deg)),
+    node(enclose: ((4, 3), (4, 3)), fill: teal.lighten(90%)),
+  ),
+)
+
+== $P_(j, l)$ の構成
+
+レベル $j$ の seed $bold(x)_l$ は、一次独立なベクトルの列を生成している。
+
+$ bold(x)_l -> N bold(x)_l -> dots.c -> N^(j-1) bold(x)_l (-> N^j bold(x)_l = bold(0)). $
+
+これを並べることで、$n times j$ 行列 $P_(j, l)$ をとる。
+
+$
+  P_(j, l) &= mat(N^(j-1) bold(x)_l, N^(j-2) bold(x)_l, dots.c, N bold(x)_l, bold(x)_l).\
+  ~> N P_(j, l) &= mat(bold(0), N^(j-1) bold(x)_l, dots.c, N bold(x)_l, bold(x)_l)\
+  &= mat(N^(j-1) bold(x)_l, N^(j-2) bold(x)_l, dots.c, N bold(x)_l, bold(x)_l) mat( 0, 1, 0, dots.c, 0, 0; 0, 0, 1, dots.c, 0, 0; dots.v, dots.v, dots.v, dots.down, dots.v, dots.v; 0, 0, 0, dots.c, 0, 1; 0, 0, 0, dots.c, 0, 0;)\
+  &= P_(j, l) J(0; j).
+$
+
+/ Check!: $P_(j, l)$ は、レベル $l$ の seed $bold(x)_l$ による長さ $j$ のベクトル列。
+
+== $P$ の構成
+
+次のようにして $P_(j, l)$ を並べることで、$n times n$ 行列 $P$ を構成する。
+
+$
+  P = mat(P_(k, 1), dots.c, P_(k, d_k), dots.c, P_(1, d_2+1), dots.c, P_(1, d_1)).
+$
+
+結局先程の基底を並べかえているだけなので、$P$ は当然正則。
+
+$
+  N P
+  &= mat(N P_(k, 1), dots.c, N P_(k, d_k), dots.c, N P_(1, d_2+1), dots.c, N P_(1, d_1))\
+  &= mat(P_(k, 1) J(0; d_k), dots.c, P_(k, d_k) J(0; d_k), dots.c, P_(1, d_2+1) J(0; 1), dots.c, P_(1, d_1) J(0; 1))\
+  &= overbrace(mat(P_(k, 1), dots.c, P_(k, d_k), dots.c, P_(1, d_2+1), dots.c, P_(1, d_1)), P) mat(J(0; d_k);,dots.down;,,J(0; d_k);,,,dots.down;,,,,J(0;1);,,,,,dots.down;,,,,,,J(0,1)).
+$
+
+==
+
+以上より、$N$ と相似な Jordan 標準形の存在が示された。
+$
+  P^(-1) N P = mat(J(0; d_k);,dots.down;,,J(0; d_k);,,,dots.down;,,,,J(0;1);,,,,,dots.down;,,,,,,J(0,1)).
+$
+
+Jordan 細胞の分布は $d_j$ の分布によって定まる。
+
+$~>$ サイズ $d_j$ の Jordan 細胞が $d_j - d_(j+1)$ 個。
+
+== 余談：主格転倒
+
+/ Question: $P = mat(P_(k, 1), dots.c, P_(k, d_k), dots.c, P_(1, d_2+1), dots.c, P_(1, d_1))$ は本当に $n$ 本のベクトルを含むのか？
+
+- $P$ を構成する行列のうち、サイズが $n times j$ なのは $P_(j, d_(j+1)+1), dots.c, P_(j, d_j)$ の $d_j - d_(j+1)$ 個。
+- したがって、$P$ に含まれるベクトルは合計で $sum_(j=1)^k j (d_j - d_(j+1))$ 本。
+- $sum_(j=1)^k j (d_j - d_(j+1)) = n$ を計算するのは意外と難しい。
+
+
+/ 主格転倒テク: 積の和を計算するときに、添字を取り換えるテクニック。
+- 「$j$ が $d_j - d_(j+1)$ 個寄与する」という視点を転換して、「$d_j$ がいくつ寄与するか」を考える。
+- $d_j$ の寄与は $j - (j-1) = 1.$
+- したがって $sum_j j (d_j - d_(j+1)) = sum_d_j d_j = d_1 + dots.c + d_n = n.$
