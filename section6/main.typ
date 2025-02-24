@@ -626,12 +626,12 @@ $ bold(x)_l -> N bold(x)_l -> dots.c -> N^(j-1) bold(x)_l (-> N^j bold(x)_l = bo
 
 $
   P_(j, l) &= mat(N^(j-1) bold(x)_l, N^(j-2) bold(x)_l, dots.c, N bold(x)_l, bold(x)_l).\
-  ~> N P_(j, l) &= mat(bold(0), N^(j-1) bold(x)_l, dots.c, N bold(x)_l, bold(x)_l)\
+  ~> N P_(j, l) &= mat(bold(0), N^(j-1) bold(x)_l, dots.c, N^2 bold(x)_l, N bold(x)_l)\
   &= mat(N^(j-1) bold(x)_l, N^(j-2) bold(x)_l, dots.c, N bold(x)_l, bold(x)_l) mat( 0, 1, 0, dots.c, 0, 0; 0, 0, 1, dots.c, 0, 0; dots.v, dots.v, dots.v, dots.down, dots.v, dots.v; 0, 0, 0, dots.c, 0, 1; 0, 0, 0, dots.c, 0, 0;)\
   &= P_(j, l) J(0; j).
 $
 
-/ Check!: $P_(j, l)$ は、レベル $l$ の seed $bold(x)_l$ による長さ $j$ のベクトル列。
+/ Check!: $P_(j, l)$ は、レベル $j$ の seed $bold(x)_l$ による長さ $j$ のベクトル列。
 
 == $P$ の構成
 
