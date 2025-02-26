@@ -105,7 +105,7 @@
 
 証明の流れはおおまかには次のようになる：
 + べき零行列 $N$ には、増大列 ${bold(0)} subset.neq Ker N subset.eq dots.c subset.eq Ker N^k = CC^n$ が付随する。
-+ 増大列に"沿う"ような良い具合の基底をとっていく。
++ 増大列に"沿う"ようにして、都合の良い基底をとっていく。
 + $A$ をこの基底で取り換えると Jordan 標準形になっている。
 
 == Setup
@@ -123,6 +123,8 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
 
 - $1 <= j <= k$ について $d_j = dim W_j - dim W_(j-1)$ とすると、$d_j$ はつねに非負。
   - $~> sum_(j=1)^k d_j = dim CC^n - dim {bold(0)} = n.$
+
+/ Remark: 一般に、線型空間の増大列のことを*旗 flag* という。
 
 == 増大列の様子
 
@@ -228,7 +230,7 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
 #align(
   center,
   cetz.canvas(
-    length: 8.8%,
+    length: 8%,
     {
       import cetz.draw: *
       rect((0, 0), (1, 0), name: "W0")
@@ -279,13 +281,13 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
       content(
         (4, 2.2),
         (11, 2.38),
-        box(for _ in range(30) [$tilde.triple$], fill: white),
+        box(for _ in range(27) [$tilde.triple$], fill: white),
       )
     },
   ),
 )
 
-/ Check!: *$U_j$ は"$N^j times$ でやっと $bold(0)$ になる"ベクトル全体によって張られる部分空間。*
+/ Check!: *$U_j = W_j slash W_(j-1)$ は"$N^j$ でやっと $bold(0)$ になる"ベクトル全体によって張られる部分空間。*
 
 == $W_(k-1), W_k$ の上段を抜粋
 
@@ -313,13 +315,14 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
 
 線型独立な $bold(x)_1, dots.c, bold(x)_d_k in U_k$ によって $W_(k-1)$ の基底を延長して $W_k$ の基底とする。
 
-このとき、$bold(x)_1, dots.c, bold(x)_d_k$ は次の条件を満たしている：
-+ $angle.l N bold(x)_1, dots.c, N bold(x)_d_k angle.r subset.eq U_(k-1).$
-  - $bold(x)_j$ は "$N^k$ でやっと $bold(0)$ になる"から、$N bold(x)_j$ は "$N^(k-1)$ でやっと $bold(0)$" になる。
-+ $N bold(x)_1, dots.c, N bold(x)_d_k$ は線型独立。
-  - $sum_j c_j N bold(x)_j = bold(0) => N (sum_j c_j bold(x)_j) = bold(0) => sum_j c_j bold(x)_j in W_1 => sum_j c_j bold(x)_j in W_(k-1).$
-  - もし $sum_j c_j bold(x)_j != bold(0)$ であれば $bold(x)_j in.not W_(k-1)$ に矛盾するので、$sum_j c_j bold(x)_j = bold(0).$
-  - $bold(x)_1, dots.c, bold(x)_d_k$ は線型独立だったから $c_1 = dots.c = c_d_k = 0.$
+/ Claim: *$N$ の $U_k$ への制限は、単射 $N|_U_k: U_k -> U_(k-1)$ として well-defined。*
+  $bold(x)_1, dots.c, bold(x)_d_k$ が次の条件を満たしていることを示せばよい：
+  + $angle.l N bold(x)_1, dots.c, N bold(x)_d_k angle.r subset.eq U_(k-1).$
+    - $bold(x)_j$ は "$N^k$ でやっと $bold(0)$ になる"から、$N bold(x)_j$ は "$N^(k-1)$ でやっと $bold(0)$" になる。
+  + $N bold(x)_1, dots.c, N bold(x)_d_k$ は線型独立。
+    - $sum_j c_j N bold(x)_j = bold(0) => N (sum_j c_j bold(x)_j) = bold(0) => sum_j c_j bold(x)_j in W_1 => sum_j c_j bold(x)_j in W_(k-1).$
+    - もし $sum_j c_j bold(x)_j != bold(0)$ であれば $bold(x)_j in.not W_(k-1)$ に矛盾するので、$sum_j c_j bold(x)_j = bold(0).$
+    - $bold(x)_1, dots.c, bold(x)_d_k$ は線型独立だったから $c_1 = dots.c = c_d_k = 0.$
 
 / Check!: $U_k = angle.l bold(x)_1, dots.c, bold(x)_d_k angle.r$ 上の $N$ の像 $Im N|_U_k = angle.l N bold(x)_1, dots.c, N bold(x)_d_k angle.r$ は*退化しない*。
 
@@ -386,11 +389,13 @@ $ {bold(0)} = W_0 red(subset.neq) W_1 subset.eq dots.c subset.eq W_(k-1) subset.
 
 $U_(k-1)$ の基底は $N bold(x)_1, dots.c, N bold(x)_d_k, bold(x)_(d_k+1), dots.c, bold(x)_d_(k-1)$ になっている。
 
-$Im N|_U_k subset.eq U_(k-1)$ と $N bold(x)_1, dots.c, N bold(x)_d_k$ の線型独立性を示したときとまったく同様に、\ 次が成り立つ：
+先程と全く同じように、$N|_U_(k-1): U_(k-1) -> U_(k-2)$ は単射として well-defined であることが示される。つまり、
 
 + $Im N|_U_(k-1) = angle.l N^2 bold(x)_1, dots.c, N^2 bold(x)_d_k, N bold(x)_(d_k+1), dots.c, N bold(x)_d_(k-1) angle.r subset.eq U_(k-2).$
 + $N^2 bold(x)_1, dots.c, N^2 bold(x)_d_k, N bold(x)_(d_k+1), dots.c, N bold(x)_d_(k-1)$ は一次独立。
-  - $N$ によって $U_(k-1)$ は退化しない。
+
+より一般に、各 $j$ に対して、次の命題が示される。
+#align(center)[*$N$ の $U_j$ への制限は、単射 $N|_U_j:U_j -> U_(j-1)$ として well-defined.*]
 
 == $Im N|_U_(k-1) subset.eq U_(k-2)$ の様子
 
@@ -584,7 +589,7 @@ $Im N|_U_k subset.eq U_(k-1)$ と $N bold(x)_1, dots.c, N bold(x)_d_k$ の線型
   ),
 )
 
-== 視点の変換："seed" により基底が生成されていく。
+== 視点の転換："seed" が生成する基底たち
 
 "余った部分"でとった基底 $bold(x)_l$ を seed と呼ぶことにする。
 
@@ -687,7 +692,12 @@ $
 
 Jordan 細胞の分布は $d_j$ の分布によって定まる。
 
-$~>$ サイズ $d_j$ の Jordan 細胞が $d_j - d_(j+1)$ 個。
+$~>$ サイズ $j$ の Jordan 細胞の個数：
+$
+  d_j - d_(j+1)
+  &= (dim W_j - dim W_(j+1)) - (dim W_(j-1) - dim W_j)\
+  &= rank N^(j-1) - 2 rank N^j + rank N^(j+1).
+$
 
 == 余談：主格転倒
 
@@ -702,3 +712,99 @@ $~>$ サイズ $d_j$ の Jordan 細胞が $d_j - d_(j+1)$ 個。
   - 「$j$ が $d_j - d_(j+1)$ 個寄与する」という視点を転換して、\ 「$d_j$ がいくつ寄与するか」を考える。
   - $d_j$ の寄与は $j - (j-1) = 1.$
   - したがって $sum_j j (d_j - d_(j+1)) = sum_d_j d_j = d_1 + dots.c + d_n = n.$
+
+== 余談 2：Young 図形
+
+べき零行列の Jordan 標準形は $n$ の分割を表現する Young 図形と一対一に対応する。
+
+#{
+  let block(coord, expr) = node(coord, align(center + horizon, text(size: 15pt)[#expr]), width: 3.5em, height: 2.5em)
+  align(
+    center + horizon,
+    diagram(
+      spacing: 0em,
+      node-stroke: 1pt,
+      node-shape: rect,
+      block((0, 0), $bold(x)_1$),
+      block((1, 0), $dots.c$),
+      block((2, 0), $bold(x)_d_k$),
+      block((0, 1), $N bold(x)_1$),
+      block((1, 1), $dots.c$),
+      block((2, 1), $N bold(x)_d_k$),
+      block((3, 1), $bold(x)_(d_k+1)$),
+      block((4, 1), $dots.c$),
+      block((5, 1), $bold(x)_d_(k-1)$),
+      block((0, 2), $dots.v$),
+      block((1, 2), $dots.v$),
+      block((2, 2), $dots.v$),
+      block((3, 2), $dots.v$),
+      block((4, 2), $dots.v$),
+      block((5, 2), $dots.v$),
+      block((6, 2), $dots.down$),
+      block((0, 3), $N^(k-1) bold(x)_1$),
+      block((1, 3), $dots.c$),
+      block((2, 3), $N^(k-1) bold(x)_d_k$),
+      block((3, 3), $N^(k-2) bold(x)_(d_k+1)$),
+      block((4, 3), $dots.c$),
+      block((5, 3), $N^(k-2) bold(x)_d_(k-1)$),
+      block((6, 3), $dots.c$),
+      block((7, 3), $bold(x)_(d_2+1)$),
+      block((8, 3), $dots.c$),
+      block((9, 3), $bold(x)_d_1$),
+    ),
+  )
+}
+
+#let n = 4
+
+== $n = #n$ の場合
+
+#{
+  let find-partitions-impl(n, ub) = {
+    if n <= 0 {
+      return ((),)
+    } else {
+      for head in range(calc.min(n, ub), 0, step: -1) {
+        find-partitions-impl(n - head, head).map(p => (head, ..p))
+      }
+    }
+  }
+  let find-partitions(n) = find-partitions-impl(n, n)
+  let partitions = find-partitions(n)
+  align(
+    center + horizon,
+    grid(
+      columns: partitions.len(),
+      gutter: 20pt,
+      ..for p in partitions {
+        (
+          diagram(
+            spacing: 0pt,
+            for (i, v) in p.enumerate(start: 1) {
+              for j in range(v) {
+                let expr = if j == 0 [$bold(x)_#i$] else if j == 1 [$N bold(x)_#i$] else [$N^(#j) bold(x)_#i$]
+                node((i, j + p.at(0) - v), expr, stroke: 1pt, height: 2.5em, width: 2.5em)
+              }
+            },
+          ),
+        )
+      },
+      ..for p in partitions {
+        let m = range(n).map(_ => range(n).map(_ => 0))
+        let s = 0
+        let div = ()
+        for v in p {
+          for i in range(v - 1) {
+            m.at(s + i).at(s + i + 1) = 1
+          }
+          if s != 0 {
+            div.push(s)
+          }
+          s += v
+        }
+        let augment = (hline: div, vline: div)
+        (math.mat(..m, augment: augment),)
+      }
+    ),
+  )
+}
