@@ -137,7 +137,7 @@
   + $W_1 + dots.c + W_m$ は $W_1, dots.c, W_m$ の直和。
   + $bold(x)_1 in W_1, dots.c, bold(x)_m in W_m$ に対して $bold(x)_1 + dots.c + bold(x)_m = bold(0)$ ならば、$bold(x)_1 = dots.c = bold(x)_m = bold(0).$
   + $bold(x)_1 in W_1 backslash {bold(0)}, dots.c, bold(x)_m in W_m backslash {bold(0)}$ とすると、$bold(x)_1, dots.c, bold(x)_m$ は一次独立。
-  + 各 $j = 2, dots.c, m$ に対して、$(W_1 + dots.c + W_(j-1)) sect W_j = {bold(0)}.$
+  + 各 $j = 2, dots.c, m$ に対して、$(W_1 + dots.c + W_(j-1)) inter W_j = {bold(0)}.$
   #proof[
     *1 $=>$ 2*, *2 $=>$ 3* は明らか。*3 $=>$ 4* は対偶が簡単に従う。*4 $=>$ 1* を示す。
     $bold(w) in W_1 + dots.c + W_m$ に対して、$bold(w) = sum_j bold(x)_j = sum_j bold(y)_j (bold(x)_j, bold(y)_j in W_j)$ とすると、$bold(z)_j = bold(x)_j - bold(y)_j in W_j$ として $sum_(j < m) bold(z)_j = -bold(z)_m$ だが、4 の主張よりその両辺は $bold(0)$ に等しい。これを繰り返すことで $forall j, bold(z)_j = bold(0)$ となり、$bold(w)$ の分解の一意性が従う。
@@ -148,9 +148,9 @@
 
 
 #theorem(number: "5.3")[
-  $dim (W_1 + W_2) = dim W_1 + dim W_2 - dim (W_1 sect W_2).$
+  $dim (W_1 + W_2) = dim W_1 + dim W_2 - dim (W_1 inter W_2).$
   #proof[
-    $n_0 = dim (W_1 sect W_2)$ とし、$W_1 sect W_2$ の基底 $bold(z)_1, dots.c, bold(z)_n_0$ をとる。
+    $n_0 = dim (W_1 inter W_2)$ とし、$W_1 inter W_2$ の基底 $bold(z)_1, dots.c, bold(z)_n_0$ をとる。
     これを延長することで、次のように基底をとることができる：
     - $W_1$ の基底 $bold(z)_1, dots.c, bold(z)_n_0, bold(x)_(n_0+1), dots.c, bold(x)_n_1.$ ただし、$n_1 = dim W_1.$
     - $W_2$ の基底 $bold(z)_1, dots.c, bold(z)_n_0, bold(y)_(n_0+1), dots.c, bold(y)_n_2.$ ただし、$n_2 = dim W_2.$
@@ -172,9 +172,9 @@
 
 #text(size: 19pt)[
   #theorem(number: "5.4")[
-    $dim (W_1 + dots.c + W_m) = sum_(j=1)^m dim W_j - sum_(j=2)^m dim ((W_1 + dots.c + W_(j-1)) sect W_j).$
+    $dim (W_1 + dots.c + W_m) = sum_(j=1)^m dim W_j - sum_(j=2)^m dim ((W_1 + dots.c + W_(j-1)) inter W_j).$
     #example[
-      $ dim (W_1 + W_2 + W_3) =& dim W_1 + dim W_2 + dim W_3\ -& dim(W_1 sect W_2) - dim((W_1 + W_2) sect W_3). $
+      $ dim (W_1 + W_2 + W_3) =& dim W_1 + dim W_2 + dim W_3\ -& dim(W_1 inter W_2) - dim((W_1 + W_2) inter W_3). $
     ]
     #proof[
       $m$ に関する帰納法。簡単なので略。

@@ -715,7 +715,7 @@ $
 
 == 余談 2：Young 図形
 
-べき零行列の Jordan 標準形は $n$ の分割を表現する Young 図形と一対一に対応する。
+べき零行列の Jordan 標準形は $n$ の分割を表現する Young 図形と\ （Jordan 細胞の並び替えを同一視した上で）一対一に対応する。
 
 #{
   let block(coord, expr) = node(coord, align(center + horizon, text(size: 15pt)[#expr]), width: 3.5em, height: 2.5em)
@@ -776,21 +776,17 @@ $
     grid(
       columns: partitions.len(),
       gutter: 20pt,
-      ..for p in partitions {
-        (
-          diagram(
-            spacing: 0pt,
-            for (i, v) in p.enumerate(start: 1) {
-              for j in range(v) {
-                let expr = if j == 0 [$bold(x)_#i$] else if j == 1 [$N bold(x)_#i$] else [$N^(#j) bold(x)_#i$]
-                node((i, j + p.at(0) - v), expr, stroke: 1pt, height: 2.5em, width: 2.5em)
-              }
-            },
-          ),
-        )
-      },
-      ..for p in partitions {
-        let m = range(n).map(_ => range(n).map(_ => 0))
+      ..partitions.map(p => diagram(
+        spacing: 0pt,
+        for (i, v) in p.enumerate(start: 1) {
+          for j in range(v) {
+            let expr = if j == 0 [$bold(x)_#i$] else if j == 1 [$N bold(x)_#i$] else [$N^(#j) bold(x)_#i$]
+            node((i, j + p.at(0) - v), expr, stroke: 1pt, height: 2.5em, width: 2.5em)
+          }
+        },
+      )),
+      ..partitions.map(p => {
+        let m = range(n).map(i => range(n).map(j => if i == j { 0 } else { none }))
         let s = 0
         let div = ()
         for v in p {
@@ -803,8 +799,9 @@ $
           s += v
         }
         let augment = (hline: div, vline: div)
-        (math.mat(..m, augment: augment),)
-      }
+
+        math.mat(..m, augment: augment)
+      })
     ),
   )
 }
