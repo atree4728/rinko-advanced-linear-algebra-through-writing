@@ -679,15 +679,15 @@ $
 $
   N P
   &= mat(N P_(k, 1), dots.c, N P_(k, d_k), dots.c, N P_(1, d_2+1), dots.c, N P_(1, d_1))\
-  &= mat(P_(k, 1) J(0; d_k), dots.c, P_(k, d_k) J(0; d_k), dots.c, P_(1, d_2+1) J(0; 1), dots.c, P_(1, d_1) J(0; 1))\
-  &= overbrace(mat(P_(k, 1), dots.c, P_(k, d_k), dots.c, P_(1, d_2+1), dots.c, P_(1, d_1)), P) mat(J(0; d_k);,dots.down;,,J(0; d_k);,,,dots.down;,,,,J(0;1);,,,,,dots.down;,,,,,,J(0,1)).
+  &= mat(P_(k, 1) J(0; k), dots.c, P_(k, d_k) J(0; k), dots.c, P_(1, d_2+1) J(0; 1), dots.c, P_(1, d_1) J(0; 1))\
+  &= overbrace(mat(P_(k, 1), dots.c, P_(k, d_k), dots.c, P_(1, d_2+1), dots.c, P_(1, d_1)), P) mat(J(0; k);,dots.down;,,J(0; k);,,,dots.down;,,,,J(0;1);,,,,,dots.down;,,,,,,J(0;1)).
 $
 
 ==
 
 以上より、$N$ と相似な Jordan 標準形の存在が示された。
 $
-  P^(-1) N P = mat(J(0; d_k);,dots.down;,,J(0; d_k);,,,dots.down;,,,,J(0;1);,,,,,dots.down;,,,,,,J(0,1)).
+  P^(-1) N P = mat(J(0; k);,dots.down;,,J(0; k);,,,dots.down;,,,,J(0;1);,,,,,dots.down;,,,,,,J(0,1)).
 $
 
 Jordan 細胞の分布は $d_j$ の分布によって定まる。
