@@ -409,3 +409,6 @@ $
 
 / $(arrow.double.l)$:
   $I, A, dots.c, A^(n-1)$ が $M_n (K)$ 上線型独立だから、ある $bold(x) in K^n$ がとれて $bold(x), A bold(x), dots.c, A^(n-1) bold(x)$ が $K^n$ の基底をなす。
+
+https://www.chart.co.jp/subject/sugaku/suken_tsushin/05/5-3.pdf
+http://www17.plala.or.jp/mi_kana/story/commutativityofmatrix.pdf
